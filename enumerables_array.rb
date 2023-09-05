@@ -40,12 +40,22 @@ class Array
         end
     return false
     end
+
+    def my_all?(&block)
+
+        self.my_each do |ele|
+            if !block.call(ele)
+                return false
+            end
+        end
+    return true
+    end
+
 end
 
+
 a = [1, 2, 3]
-p a.my_any? { |num| num > 1 } # => true
-p a.my_any? { |num| num == 4 } # => false
-
-
+p a.my_all? { |num| num > 1 } # => false
+p a.my_all? { |num| num < 4 } # => true
 
    
