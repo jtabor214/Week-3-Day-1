@@ -31,12 +31,21 @@ class Array
         array
     end
 
-
+    def my_any?(&block)
+        
+        self.my_each do |ele|
+            if block.call(ele)
+                return true
+            end
+        end
+    return false
+    end
 end
 
 a = [1, 2, 3]
-p a.my_reject { |num| num > 1 } # => [1]
-p a.my_reject { |num| num == 4 } # => [1, 2, 3]
+p a.my_any? { |num| num > 1 } # => true
+p a.my_any? { |num| num == 4 } # => false
+
 
 
    
